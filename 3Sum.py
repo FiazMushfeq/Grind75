@@ -16,10 +16,8 @@ def threeSum(nums: List[int]) -> List[List[int]]:
     results = []
     nums.sort()
     numsDict = {key : value for key, value in enumerate(nums)}
-    for i, target in enumerate(nums):
-        for j, value in enumerate(nums):
-            if (0 - (target + value)) in numsDict:
-                k = numsDict
+    print(nums)
+    print(numsDict)
     return results
 
 nums = [-1,0,1,2,-1,-4]
