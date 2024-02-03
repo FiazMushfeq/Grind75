@@ -14,9 +14,16 @@ def threeSum(nums: List[int]) -> List[List[int]]:
 
     # Loop through list once, then use TwoSum approach: O(n^2)
     results = []
-    nums.sort()
     numsDict = {key : value for key, value in enumerate(nums)}
-    print(nums)
+    for x, vX in enumerate(nums):
+        for y, vY in enumerate(nums):
+            target = vX + vY
+            need = -1 * target
+            if ((x != y) and (x != nums[need]) and (y != nums[need])):
+                print([vX, vY, need])
+                value = sorted([vX, vY, need])
+                if (need in nums) and (value not in results):
+                    results.append(value)
     print(numsDict)
     return results
 
