@@ -14,20 +14,26 @@ def threeSum(nums: List[int]) -> List[List[int]]:
 
     # Loop through list once, then use TwoSumII approach: O(n^2)
     results = []
-    nums = sorted(nums) # O(nlogn)
+    nums.sort() # O(nlogn)
     # numsDict = dict()
-    for index, target in enumerate(nums):
-        # x + y + z = 0
-        left, right = index + 1, len(nums) - 1
+    for x in range(len(nums) - 2):
+        # Check if current is the same value as previous
+        if x > 0 and nums[x] == nums[x - 1]:
+            continue
+        # Check current with next and last elements and work inwards
+        left, right = x + 1, len(nums) - 1
         while left < right:
-            currSum = target + nums[left] + nums[right]
+            # x + y + z = 0
+            currSum = nums[x] + nums[left] + nums[right]
             if currSum == 0:
                 # Solution found!
-                # print([index, left, right])
-                results.append([target, nums[left], nums[right]])
-                left += 1
-                while nums[left] == nums[left - 1] and left < right:
+                results.append([nums[x], nums[left], nums[right]])
+                while left < right and nums[left] == nums[left + 1]:
                     left += 1
+                while left < right and nums[right] == nums[right - 1]:
+                    right -= 1
+                left += 1
+                right -= 1 
             elif currSum < 0:
                 left += 1
             else:
