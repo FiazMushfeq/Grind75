@@ -26,6 +26,7 @@ def twoSum(nums: List[int], target: int) -> List[int]:
         if target - value in numsDict:
             return [numsDict[target - value], index]
         numsDict[value] = index
+    return None
 
 # nums = [2,7,11,15], target = 9
 nums = [2,7,11,15]

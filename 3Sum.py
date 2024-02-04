@@ -12,19 +12,26 @@ def threeSum(nums: List[int]) -> List[List[int]]:
     #                     results.append(sortedTriplet)
     # return results
 
-    # Loop through list once, then use TwoSum approach: O(n^2)
+    # Loop through list once, then use TwoSumII approach: O(n^2)
     results = []
-    numsDict = {key : value for key, value in enumerate(nums)}
-    for x, vX in enumerate(nums):
-        for y, vY in enumerate(nums):
-            target = vX + vY
-            need = -1 * target
-            if ((x != y) and (x != nums[need]) and (y != nums[need])):
-                print([vX, vY, need])
-                value = sorted([vX, vY, need])
-                if (need in nums) and (value not in results):
-                    results.append(value)
-    print(numsDict)
+    nums = sorted(nums) # O(nlogn)
+    # numsDict = dict()
+    for index, target in enumerate(nums):
+        # x + y + z = 0
+        left, right = index + 1, len(nums) - 1
+        while left < right:
+            currSum = target + nums[left] + nums[right]
+            if currSum == 0:
+                # Solution found!
+                # print([index, left, right])
+                results.append([target, nums[left], nums[right]])
+                left += 1
+                while nums[left] == nums[left - 1] and left < right:
+                    left += 1
+            elif currSum < 0:
+                left += 1
+            else:
+                right -= 1
     return results
 
 nums = [-1,0,1,2,-1,-4]
@@ -36,5 +43,9 @@ nums = [0,1,1]
 print(threeSum(nums))
 
 nums = [0,0,0]
+# Output: [[0,0,0]]
+print(threeSum(nums))
+
+nums = [0,0,0,0]
 # Output: [[0,0,0]]
 print(threeSum(nums))
