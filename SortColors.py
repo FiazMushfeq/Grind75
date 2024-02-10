@@ -7,6 +7,9 @@ def sortColors(nums: List[int]) -> None:
         # O(nlogn) sort the list
         # nums = nums.sort()
 
+        # O(n^2): two-pass algorithm
+        
+
 nums = [2,0,2,1,1,0]
 # Output: [0,0,1,1,2,2]
 sortColors(nums)
