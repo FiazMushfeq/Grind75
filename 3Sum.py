@@ -33,7 +33,7 @@ def threeSum(nums: List[int]) -> List[List[int]]:
                 while left < right and nums[right] == nums[right - 1]:
                     right -= 1
                 left += 1
-                right -= 1 
+                right -= 1
             elif currSum < 0:
                 left += 1
             else:
