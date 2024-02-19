@@ -12,6 +12,7 @@ def lengthOfLongestSubstring(s: str) -> int:
     #         if len(t) == len(Counter(t)):
     #             if len(t) > longestLength:
     #                 longestLength = len(t)
+
     # Sliding Window with Set: O(n)
     longestLength = 0
     unique = set()

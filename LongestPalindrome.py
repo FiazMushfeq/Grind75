@@ -24,5 +24,5 @@ s = "a"
 print(longestPalindrome(s))
 
 s = "Aa"
-# Output: 7
+# Output: 1
 print(longestPalindrome(s))
